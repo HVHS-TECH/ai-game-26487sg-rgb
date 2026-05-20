@@ -1,0 +1,45 @@
+body {
+  margin: 0;
+  overflow: hidden;
+  background: black;
+  font-family: Arial, sans-serif;
+  color: white;
+}
+
+canvas {
+  display: block;
+  background: linear-gradient(to bottom, #050816, #0b1026);
+}
+
+#ui {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-size: 22px;
+  z-index: 10;
+}
+
+#gameOver {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  display: none;
+  z-index: 20;
+}
+
+button {
+  padding: 12px 20px;
+  font-size: 18px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-top: 10px;
+  background: #4f46e5;
+  color: white;
+}
+
+button:hover {
+  background: #6366f1;
+}

@@ -1,16 +1,25 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>My AI game</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Space Dodger</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <div id="ui">Score: <span id="score">0</span></div>
 
-<h1>AI game goes here</h1>
+  <div id="gameOver">
+    <h1>Game Over</h1>
+    <p>Your Score: <span id="finalScore">0</span></p>
+    <button onclick="restartGame()">Play Again</button>
+  </div>
 
+  <canvas id="gameCanvas"></canvas>
 
-
-<script src="game.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
+
 
 

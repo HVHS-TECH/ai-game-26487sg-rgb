@@ -26,16 +26,19 @@ document.addEventListener('keyup', (e) => {
 });
 
 function createObstacle() {
-  const size = Math.random() * 40 + 30;
+  const type = Math.floor(Math.random() * 6);
 
-  obstacles.push({
-    x: Math.random() * (canvas.width - size),
-    y: -size,
-    width: size,
-    height: size,
-    speed: Math.random() * 4 + 4
-  });
-}
+  let obstacle = {
+    x: Math.random() * (canvas.width - 60),
+    y: -60,
+    width: 60,
+    height: 60,
+    speed: Math.random() * 4 + 4,
+    type: type
+  };
+
+  obstacles.push(obstacle);
+} 
 
 function drawPlayer() {
   ctx.fillStyle = '#00e5ff';
@@ -49,10 +52,69 @@ function drawPlayer() {
 }
 
 function drawObstacles() {
-  ctx.fillStyle = '#ff3b3b';
-
   obstacles.forEach((o) => {
-    ctx.fillRect(o.x, o.y, o.width, o.height);
+
+    switch (o.type) {
+
+      // Red Block
+      case 0:
+        ctx.fillStyle = "red";
+        ctx.fillRect(o.x, o.y, o.width, o.height);
+        break;
+
+      // Blue Circle
+      case 1:
+        ctx.fillStyle = "blue";
+        ctx.beginPath();
+        ctx.arc(o.x + 30, o.y + 30, 30, 0, Math.PI * 2);
+        ctx.fill();
+        break;
+
+      // Green Triangle
+      case 2:
+        ctx.fillStyle = "lime";
+        ctx.beginPath();
+        ctx.moveTo(o.x + 30, o.y);
+        ctx.lineTo(o.x, o.y + 60);
+        ctx.lineTo(o.x + 60, o.y + 60);
+        ctx.closePath();
+        ctx.fill();
+        break;
+
+      // Purple Diamond
+      case 3:
+        ctx.fillStyle = "purple";
+        ctx.beginPath();
+        ctx.moveTo(o.x + 30, o.y);
+        ctx.lineTo(o.x + 60, o.y + 30);
+        ctx.lineTo(o.x + 30, o.y + 60);
+        ctx.lineTo(o.x, o.y + 30);
+        ctx.closePath();
+        ctx.fill();
+        break;
+
+      // Yellow Bar
+      case 4:
+        ctx.fillStyle = "yellow";
+        ctx.fillRect(o.x, o.y + 15, 60, 30);
+        break;
+
+      // Orange Hexagon
+      case 5:
+        ctx.fillStyle = "orange";
+
+        ctx.beginPath();
+        ctx.moveTo(o.x + 15, o.y);
+        ctx.lineTo(o.x + 45, o.y);
+        ctx.lineTo(o.x + 60, o.y + 30);
+        ctx.lineTo(o.x + 45, o.y + 60);
+        ctx.lineTo(o.x + 15, o.y + 60);
+        ctx.lineTo(o.x, o.y + 30);
+        ctx.closePath();
+
+        ctx.fill();
+        break;
+    }
   });
 }
 
